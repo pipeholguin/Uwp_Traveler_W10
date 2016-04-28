@@ -1,0 +1,94 @@
+﻿<Page
+    x:Class="Traveler.DetailBusquedaPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Traveler"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="1"  Margin="5 0 5 10" Orientation="Vertical" DataContext="{x:Bind viaje}">
+            <Image  Source="{Binding Imagen}" Margin="0 10 0 10" Grid.Row="0" Height="220" Width="370" HorizontalAlignment="Center" VerticalAlignment="Center"  Stretch="Fill"/>
+            
+            <Rectangle Width="2000" Margin="30 0 30 10" HorizontalAlignment="Left" Height="0.5" VerticalAlignment="Top">
+                <Rectangle.Fill>
+                    <SolidColorBrush  Color="DarkGray"/>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <StackPanel  Orientation="Horizontal" Margin="25 0 0 0">
+                <TextBlock VerticalAlignment="Center" Text="" FontFamily="Segoe MDL2 Assets"/>
+                <TextBlock Margin="5 0 0 0"  Text="Destino" HorizontalAlignment="Stretch" Width="auto" />
+                <TextBlock Text="{Binding Destino}" Margin="10 0 0 0" Foreground="#696969"/>
+            </StackPanel>
+
+            <StackPanel  Orientation="Horizontal"  Margin="25 0 0 0">
+                <TextBlock VerticalAlignment="Center" Text="" FontFamily="Segoe MDL2 Assets"/>
+                <TextBlock Margin="5 0 0 0"  Text="Vehiculo" HorizontalAlignment="Stretch" Width="auto" />
+                <TextBlock Text="{Binding Carro}" Margin="10 0 0 0" Foreground="#696969"/>
+            </StackPanel>
+            <StackPanel>
+                <StackPanel  Orientation="Horizontal"  Margin="25 0 0 0">
+                    <TextBlock VerticalAlignment="Center" Text="" FontFamily="Segoe MDL2 Assets"/>
+                    <TextBlock Margin="5 0 0 0"  Text="Cupos" HorizontalAlignment="Stretch" Width="auto" />
+                    <TextBlock Text="{Binding Asientos}" Margin="10 0 0 0" Foreground="#696969"/>
+
+                    <StackPanel  Orientation="Horizontal" Margin="130 0 0 0">
+                        <TextBlock VerticalAlignment="Center" Margin="7 0 0 0" Foreground="DarkCyan" FontWeight="ExtraBold" FontSize="18" Text="$" />
+                        
+                        <TextBlock Text="{Binding Precio}" Margin="10 0 0 0" FontSize="20" VerticalAlignment="Center" Foreground="DarkCyan" FontWeight="ExtraBold"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+
+
+
+
+            <StackPanel  Orientation="Horizontal"  Margin="25 0 0 0">
+                <TextBlock VerticalAlignment="Center" Text="" FontFamily="Segoe MDL2 Assets"/>
+                <TextBlock Margin="5 0 0 0"  Text="Hora" HorizontalAlignment="Stretch" Width="auto" />
+                <TextBlock Text="{Binding Hora}" Margin="10 0 0 0" Foreground="#696969"/>
+            </StackPanel>
+
+            <StackPanel  Orientation="Horizontal"  Margin="25 0 0 0">
+                <TextBlock VerticalAlignment="Center" Text="" FontFamily="Segoe MDL2 Assets"/>
+                <TextBlock Margin="5 0 0 0"  Text="Fecha" HorizontalAlignment="Stretch" Width="auto" />
+                <TextBlock Text="{Binding Fecha}" Margin="10 0 0 0" Foreground="#696969"/>
+            </StackPanel>
+
+            
+        
+      
+
+        <StackPanel  Margin="0 20 0 0" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal"  Margin="45 0 0 0">
+                    <TextBlock VerticalAlignment="Center" Foreground="Green" Text="" FontFamily="Segoe MDL2 Assets"/>
+                <TextBlock Text="Contacto" Margin="5 0 0 0" Foreground="Green"></TextBlock>
+                    <TextBlock  Margin="10 0 0 0" Text="{Binding Contacto}"></TextBlock>
+                </StackPanel>
+               
+            
+        </StackPanel>
+        </StackPanel>
+    </Grid>
+    <Page.BottomAppBar>
+
+        <CommandBar Background="#1E90FF" Foreground="White">
+
+
+        <CommandBar.PrimaryCommands>
+            <AppBarButton Icon="Clear" Click="salir" Foreground="White" FontWeight="ExtraBold">
+
+            </AppBarButton>
+        </CommandBar.PrimaryCommands>
+    </CommandBar>
+    </Page.BottomAppBar>
+</Page>

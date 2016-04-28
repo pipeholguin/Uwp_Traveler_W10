@@ -1,0 +1,256 @@
+﻿<Page
+    x:Class="Traveler.MenuPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Traveler"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:Traveler.Models"
+    mc:Ignorable="d">
+
+ 
+    
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Pivot Style="{StaticResource PivotStyle1}">
+            <Pivot.RightHeader>
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock VerticalAlignment="Center" Foreground="#1E90FF"  Margin="0 0 5 0" Text="" FontFamily="Segoe MDL2 Assets"/>
+                    <TextBlock Text="" x:Name="origengps" Foreground="#1E90FF" Margin="0 0 5 0"></TextBlock>
+                </StackPanel>
+            </Pivot.RightHeader>
+            
+            <PivotItem>
+                    
+                <PivotItem.Header>
+                 
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center" Text=""  Margin="0 0 2 0" FontFamily="Segoe MDL2 Assets"/>
+                            <TextBlock Text="Buscar" FontSize="18"   Margin="0 0 3 0"/>
+
+                        
+                    </StackPanel>
+
+                </PivotItem.Header>
+                <Grid x:Name="root">
+
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+
+                    
+                    <ListBox SelectionChanged="list_SelectionChanged" x:Name="list" Grid.Row="1" Margin="5 5 5 5" ItemsSource="{x:Bind Data}" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:DataType="models:Viaje" >
+                                <StackPanel Orientation="Vertical">
+                                <StackPanel  Orientation="Horizontal" >
+                                    
+                                        
+                                        
+                                    <Image Grid.Column="0" Height="100" Width="175" Stretch="Fill" Source="{x:Bind Imagen}"
+                                         
+                                           />
+                                    <StackPanel Orientation="Vertical" Margin="20 0 0 0">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock VerticalAlignment="Center"  Text="" Foreground="DarkCyan" FontFamily="Segoe MDL2 Assets"/>
+                                            <TextBlock Margin="5 0 0 0" Foreground="DarkCyan" Text="Destino" HorizontalAlignment="Stretch" Width="auto" />
+                                            <TextBlock Text="{x:Bind Destino}"  Margin="10 0 0 0" Foreground="DarkCyan" FontWeight="Bold"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock VerticalAlignment="Center" Text="" FontFamily="Segoe MDL2 Assets"/>
+                                            <TextBlock Margin="5 0 0 0"  Text="Cupos" HorizontalAlignment="Stretch" Width="auto" />
+                                            <TextBlock  Text="{x:Bind Asientos}" Margin="10 0 0 0" Foreground="Gray"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock VerticalAlignment="Center" Text="$" Margin="4 0 0 0"/>
+                                            <TextBlock Margin="8 0 0 0"  Text="Precio" HorizontalAlignment="Stretch" Width="auto" />
+                                            <TextBlock Text="{x:Bind Precio}" Margin="10 0 0 0" Foreground="Gray" FontWeight="Bold" />
+                                            
+
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    
+                                </StackPanel>
+                                    <Rectangle Width="8000" Margin="0 10 0 10" HorizontalAlignment="Left" Height="0.5" VerticalAlignment="Top">
+                                        <Rectangle.Fill>
+                                            <SolidColorBrush  Color="DarkGray"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+
+                                </StackPanel>
+
+
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </PivotItem>
+                <PivotItem>
+                   
+                    <PivotItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center"  Text="" Margin="0 0 3 0" FontFamily="Segoe MDL2 Assets"/>
+                            <TextBlock Text="Publicar"  FontSize="18"/>
+                        </StackPanel>
+                    </PivotItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+
+                    <StackPanel HorizontalAlignment="Center">
+                        <Image x:Name="ImageS" Source="Assets/IMG/nopicture.png" Height="100"/>
+                        <Button HorizontalAlignment="Center" Content="Examinar"  BorderThickness="0" Width="175" Height="35" Margin="0 0 10 0" Click="SubirImagen_Click">
+
+                        </Button>
+                        <TextBlock Foreground="Gray" Text="Elige una Imagen"  Style="{StaticResource BaseTextBlockStyle}" VerticalAlignment="Center" Margin="30 0 0 0"></TextBlock>
+
+                        <TextBlock Foreground="Red" x:Name="aviso2"   Margin="0 15 0 10"></TextBlock>
+
+                    </StackPanel>
+
+                    
+
+                    <ScrollViewer Grid.Row="1" MaxHeight="360" Margin="0 0 0 20">
+                        <StackPanel Orientation="Vertical">
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" Text="" FontFamily="Segoe MDL2 Assets"/>
+                                
+                                <TextBox Margin="5 0 0 0" PlaceholderText="Origen" x:Name="origenp" Foreground="Gray" HorizontalAlignment="Stretch" Width="auto" BorderThickness="0"/>
+                            </StackPanel>
+                            <Rectangle Width="300" Margin="30 0 30 10" HorizontalAlignment="Left" Height="0.5" VerticalAlignment="Top">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush  Color="DarkGray"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
+
+
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" Text="" FontFamily="Segoe MDL2 Assets"/>
+                                <TextBlock VerticalAlignment="Center" Margin="15 0 0 0" Text="Destino" />
+                                <ComboBox Margin="5 0 0 0"  x:Name="destinop" BorderBrush="DarkGray" PlaceholderText="Seleccione"  HorizontalAlignment="Stretch" Width="auto" BorderThickness="0">
+                                    <x:String>Cali</x:String>
+                                    <x:String>Pasto</x:String>
+                                    <x:String>Bogota</x:String>
+                                </ComboBox>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" Text="" FontFamily="Segoe MDL2 Assets"/>
+                                <TextBlock VerticalAlignment="Center" Margin="15 0 0 0" Text="Cupos" />
+                                <ComboBox Margin="0 0 0 0"  x:Name="cuposp" BorderBrush="DarkGray" PlaceholderText="Seleccione" HorizontalAlignment="Stretch" Width="auto" BorderThickness="0">
+                                    <x:String>1</x:String>
+                                    <x:String>2</x:String>
+                                    <x:String>3</x:String>
+                                    <x:String>4</x:String>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" Text="" FontFamily="Segoe MDL2 Assets"/>
+                                <TextBlock Margin="15 0 0 0" Text="Tipo vehiculo"  HorizontalAlignment="Stretch" Width="auto" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="carrop" BorderBrush="DarkGray"  PlaceholderText="Seleccione" HorizontalAlignment="Stretch" Width="auto" BorderThickness="0">
+                                    <x:String>Automovil</x:String>
+                                    <x:String>Camioneta</x:String>
+                                </ComboBox>
+                            </StackPanel>
+
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 10 0 0">
+                                <DatePicker Header="Selecciona fecha" x:Name="fechap" BorderBrush="Transparent" BorderThickness="0"/>
+                            </StackPanel>
+                            <TextBlock Text="Seleccione hora" Margin="80 2 0 0"></TextBlock>
+
+                            <StackPanel HorizontalAlignment="Center"  Margin="10 0 0 10" Orientation="Horizontal">
+                                <ComboBox x:Name="horap" BorderBrush="DarkGray"  PlaceholderText="Hora" HorizontalAlignment="Stretch" Width="auto" >
+                                    <x:String>1</x:String>
+                                    <x:String>2</x:String>
+                                    <x:String>3</x:String>
+                                    <x:String>4</x:String>
+                                    <x:String>5</x:String>
+                                    <x:String>6</x:String>
+                                    <x:String>7</x:String>
+                                    <x:String>8</x:String>
+                                    <x:String>9</x:String>
+                                    <x:String>10</x:String>
+                                    <x:String>11</x:String>
+                                    <x:String>12</x:String>
+                                </ComboBox>
+                                <ComboBox x:Name="jornadap" BorderBrush="DarkGray"  PlaceholderText="jornada" HorizontalAlignment="Stretch" Width="auto" >
+                                    <x:String>am</x:String>
+                                    <x:String>pm</x:String>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" Text="$" Margin="5 0 5 0"/>
+                                <TextBox Margin="5 0 0 0" InputScope="Number" x:Name="preciop" PlaceholderText="Precio" HorizontalAlignment="Stretch" Width="auto" BorderThickness="0"/>
+                            </StackPanel>
+                            <Rectangle Width="300" Margin="30 0 30 10" HorizontalAlignment="Left" Height="0.5" VerticalAlignment="Top">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush  Color="DarkGray"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" Text="" FontFamily="Segoe MDL2 Assets" Margin="5 0 5 0"/>
+                                <TextBox Margin="5 0 0 0" InputScope="Number" x:Name="contactop" PlaceholderText="Numero de contacto" HorizontalAlignment="Stretch" Width="auto" BorderThickness="0"/>
+                            </StackPanel>
+                            <Rectangle Width="300" Margin="30 0 30 10" HorizontalAlignment="Left" Height="0.5" VerticalAlignment="Top">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush  Color="DarkGray"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
+
+                            
+                            
+                        </StackPanel>
+                    </ScrollViewer>
+
+
+                    <Button Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0 0 0 10" Click="registrar">
+                        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                            <TextBlock VerticalAlignment="Center" Text="" FontFamily="Segoe MDL2 Assets"/>
+                            <TextBlock Margin="5 0 0 0" VerticalAlignment="Center" Text="Publicar" />
+                        </StackPanel>
+                    </Button>
+
+
+
+
+                </Grid>
+                </PivotItem>
+               
+
+            </Pivot>
+
+        
+
+    </Grid>
+
+    <Page.BottomAppBar>
+
+
+
+        <CommandBar Background="#1E90FF" Foreground="White">
+         
+             
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Clear" Click="salir" Foreground="White" FontWeight="ExtraBold">
+                    
+                </AppBarButton>
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+</Page>
